@@ -1,5 +1,8 @@
 #pragma once
 #include "AEntity.h"
+#include "Physics.h"
+#include <box2d/box2d.h>
+
 namespace JakEngine {
 	class Application
 	{
@@ -7,6 +10,8 @@ namespace JakEngine {
 		std::vector<AEntity*> listEntity;
 		sf::RenderWindow* window;
 		static JakEngine::Application* instance;
+		JakEngine::Physics* physic;
+		float time;
 
 		Application();
 		~Application();
@@ -16,6 +21,8 @@ namespace JakEngine {
 		void Run();
 		void CreateEntity(std::string name);
 		AEntity* GetEntity(std::string name);
+		void updatePhysic(float t);
+
 
 		static Application* GetInstance();
 	};

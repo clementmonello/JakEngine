@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include "CameraComponent.h"
+#include "RigidBody.h"
 
 int JakEngine::AEntity::nbID = 0;
 
@@ -103,11 +104,12 @@ void JakEngine::AEntity::draw(sf::RenderTarget& target, sf::RenderStates states)
 		VisualComponent* vcomp = dynamic_cast<VisualComponent*>(CompPointer);
 		if (vcomp != nullptr) {
 
-			std::cout <<"drawing";
+			std::cout <<"drawing visual";
 
 			vcomp->forme.shape->setPosition(vcomp->forme.position.x, vcomp->forme.position.y);
 			sf::Shape* currentShape = vcomp->forme.shape;
 			target.draw(*currentShape, states);
+			break;
 		}
 	}
 }

@@ -31,6 +31,16 @@ void JakEngine::VisualComponent::setDefaultParameters(sf::Shape* s, sf::Color c,
 	forme.position = sf::Vector2f(i, j);
 }
 
+void JakEngine::VisualComponent::setShape(sf::Shape* s)
+{
+	forme.shape = s;
+}
+
+void JakEngine::VisualComponent::setPosition(sf::Vector2f p)
+{
+	forme.position = p;
+}
+
 void JakEngine::VisualComponent::Awake()
 {
 }

@@ -12,6 +12,9 @@ namespace JakEngine {
 		~VisualComponent();
 
 		virtual void setDefaultParameters(sf::Shape* s, sf::Color c, float i, float j);
+		virtual void setShape(sf::Shape* s);
+		virtual void setPosition(sf::Vector2f p);
+
 
 		virtual void Awake();
 		virtual void Start();

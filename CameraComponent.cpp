@@ -3,13 +3,14 @@
 
 JakEngine::CameraComponent::CameraComponent():JakEngine::AComponent::AComponent()
 {
-	window = nullptr;
+	isActive = false;
 }
 
-JakEngine::CameraComponent::CameraComponent(std::string n,sf::RenderWindow* w):JakEngine::AComponent::AComponent(n)
+JakEngine::CameraComponent::CameraComponent(std::string n) : JakEngine::AComponent::AComponent(n)
 {
-	window = w;
+	isActive = false;
 }
+
 
 JakEngine::CameraComponent::~CameraComponent()
 {
@@ -46,8 +47,7 @@ int JakEngine::CameraComponent::GetID()
 	return ID;
 }
 
-void JakEngine::CameraComponent::SetWindow(sf::RenderWindow* w)
+void JakEngine::CameraComponent::SetView(sf::View v)
 {
-	window = w;
-	view = window->getDefaultView();
+	view = v;
 }
