@@ -16,7 +16,7 @@ JakEngine::AEntity::AEntity()
 	ID = nbID;
 	name = "DefaultName";
 	listComponent = std::vector<AComponent*>();
-
+	isColliding = false;
 }
 
 JakEngine::AEntity::AEntity(std::string n)
@@ -24,6 +24,7 @@ JakEngine::AEntity::AEntity(std::string n)
 	nbID++;
 	ID = nbID;
 	name = n;
+	isColliding = false;
 	listComponent = std::vector<AComponent*>();
 }
 
@@ -90,9 +91,14 @@ void JakEngine::AEntity::Push(float x, float y)
 	this->move(x, y);
 }
 
-float* JakEngine::AEntity::OnCollisionEnter()
+void JakEngine::AEntity::OnCollisionEnter()
 {
-	return nullptr;
+	std::cout << name << " colliding !" << std::endl;
+}
+
+void JakEngine::AEntity::OnCollisionExit()
+{
+	std::cout << name << " stopped colliding !" << std::endl;
 }
 
 void JakEngine::AEntity::draw(sf::RenderTarget& target, sf::RenderStates states)const
@@ -104,7 +110,7 @@ void JakEngine::AEntity::draw(sf::RenderTarget& target, sf::RenderStates states)
 		VisualComponent* vcomp = dynamic_cast<VisualComponent*>(CompPointer);
 		if (vcomp != nullptr) {
 
-			std::cout <<"drawing visual";
+			//std::cout <<"drawing visual";
 
 			vcomp->forme.shape->setPosition(vcomp->forme.position.x, vcomp->forme.position.y);
 			sf::Shape* currentShape = vcomp->forme.shape;

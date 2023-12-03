@@ -15,6 +15,7 @@ namespace JakEngine {
 		sf::Sprite Sprite;
 		sf::Texture Texture;
 		int ID;
+		bool isColliding;
 
 		AEntity();
 		AEntity(std::string n);
@@ -32,7 +33,8 @@ namespace JakEngine {
 
 		int GetID();
 
-		virtual float* OnCollisionEnter();
+		virtual void OnCollisionEnter();
+		virtual void OnCollisionExit();
 
 		template<typename T>
 		T* CreateAComponent(std::string n)
@@ -43,6 +45,8 @@ namespace JakEngine {
 		}
 
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states)const;
+
+		static AEntity* entityByFusion(AEntity* e1, AEntity* e2);
 	};
 }
 
